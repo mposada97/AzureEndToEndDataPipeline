@@ -24,7 +24,6 @@ To enable data ingestion from the on-premises SQL Server database to the cloud, 
 To automate the ingestion process, I used a Lookup activity in Azure Data Factory with the following query to dynamically retrieve all tables under the SalesLT schema:
 
 ```sql
-Copy code
 SELECT
     s.name AS SchemaName,
     t.name AS TableName
