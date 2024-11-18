@@ -49,4 +49,17 @@ This structure allowed for a clear, logical organization of the raw ingested dat
 
 Its also important to mention that by default the copy activity will overwrite files if they already exist, to have different versions of files folder with date information can also be added, or date information can be added to the file name
 
+## Transformation
+The notebooks used for data transformations can be found in the repository linked to this README. The transformation pipeline follows a structured approach, moving data through Bronze, Silver, and Gold tiers in the data lake.
+
+Bronze Tier:
+- Data is ingested as-is from the source and saved in Parquet format in the Bronze tier.
+- This layer acts as a raw storage zone, preserving the data in its original state for traceability and auditing.
+Silver Tier:
+- Minor transformations are applied in the Silver tier, such as data cleaning, normalization, and deduplication.
+- This layer prepares the data for further analysis and aligns it with standard business rules.
+Gold Tier:
+- Final transformations are performed to organize the data into a Star Schema, facilitating analytics and reporting.
+- The Gold tier is saved in Delta format, enabling efficient querying and integration with BI tools.
+This tiered approach demonstrates the best practices for managing and transforming data in a cloud-based data lake architecture.
 
