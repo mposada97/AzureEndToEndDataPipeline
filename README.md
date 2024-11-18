@@ -7,3 +7,8 @@ This project leverages the AdventureWorks LT17 sample database as a source to il
 
 ## Architechture
 ![image](https://github.com/user-attachments/assets/9910cb0a-9cba-4a40-a807-28b1110dc37a)
+
+The architecture begins by ingesting data from the on-premises SQL Server database using Azure Data Factory into a Data Lake Gen2, following the Bronze, Silver, and Gold tiering pattern, making simple transformations in between tiers using Azure Databricks. Finally, Azure Synapse Analytics with serverless SQL pools is used to create views on the Gold tier, enabling integration with Power BI for visualization and reporting.
+
+##Ingestion
+
