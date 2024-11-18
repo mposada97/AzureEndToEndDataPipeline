@@ -32,5 +32,14 @@ INNER JOIN sys.schemas s ON t.schema_id = s.schema_id
 WHERE s.name = 'SalesLT'
 ```
 The Lookup activity provided a list of tables, which was passed into a For Each activity. Inside the loop, a Copy activity was used to load each table from SQL Server into the Bronze tier of the Data Lake Gen2, preserving the raw data for further transformations.
+![image](https://github.com/user-attachments/assets/584b5b5c-93db-4f0e-ae95-a832419e0c14)
+
+Within the For Each activity, the retrieved table and schema names from the Lookup activity were dynamically passed to the Copy activity to determine file names and folder paths. The dataset in the Copy activity utilized these values to save the data in the Bronze tier of the Data Lake Gen2, ensuring proper organization.
+
+Each table's data was written into a folder structure based on its schema and table name, using the following dynamic expressions:
+
+Folder Path: @{concat(dataset().schemaname, '/')}
+File Name: @{concat(dataset().tablename, '.parquet')}
+This structure allowed for a clear, logical organization of the raw ingested data in Parquet format with Snappy compression, facilitating easy navigation and further transformations.
 
 
