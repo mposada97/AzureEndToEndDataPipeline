@@ -65,3 +65,34 @@ Gold Tier:
 - The Gold tier is saved in Delta format, enabling efficient querying and integration with BI tools.
 This tiered approach demonstrates the best practices for managing and transforming data in a cloud-based data lake architecture.
 
+## Loading Data into Synapse
+The final step in the pipeline involves creating views in Azure Synapse serverless SQL pools to expose the transformed data in the Gold tier for analytics and reporting. This process was automated using a For Each activity in Azure Data Factory, which iterates over the list of tables in the Gold tier.
+
+A Get Metadata activity was used to retrieve all child items (table names) from the Gold tier folder in the Data Lake.
+The output of the metadata activity was passed into the For Each activity, which executed a stored procedure for each table. The stored procedure dynamically creates views in the Synapse serverless SQL pool.
+Here’s the code for the stored procedure used:
+
+```sql
+USE gold_db
+GO
+
+CREATE OR ALTER PROC CreateSQLServerlessView_gold @ViewName nvarchar(100)
+AS
+BEGIN
+
+DECLARE @statement VARCHAR(MAX)
+
+    SET @statement = N'CREATE OR ALTER VIEW ' + @ViewName + ' AS
+        SELECT *
+        FROM 
+            OPENROWSET(
+            BULK ''https://dlgen2mposada.dfs.core.windows.net/gold/SalesLT/' + @ViewName + '/'',
+            FORMAT = ''DELTA''
+        ) as [result]
+    '   
+EXEC (@statement)
+
+END
+GO
+```
+
