@@ -10,6 +10,10 @@ This project leverages the AdventureWorks LT17 sample database as a source to il
 
 The architecture begins by ingesting data from the on-premises SQL Server database using Azure Data Factory into a Data Lake Gen2, following the Bronze, Silver, and Gold tiering pattern, making simple transformations in between tiers using Azure Databricks. Finally, Azure Synapse Analytics with serverless SQL pools is used to create views on the Gold tier, enabling integration with Power BI for visualization and reporting.
 
+The following services were created for this project under one resource group:
+![image](https://github.com/user-attachments/assets/feffbe73-ba3e-4b0b-b9cb-9aacb10503e2)
+
+
 ## Data Pipelines
 First a pipeline was created using ADF consuming the data from the On prem SQL server and getting it up to the gold tier level in the datalake. A schedule trigger was added to run the pipeline daily. 
 ![image](https://github.com/user-attachments/assets/6f23fad9-2bec-4d8e-b210-b3c2960a496e)
