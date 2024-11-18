@@ -31,5 +31,6 @@ SELECT
 FROM sys.tables t 
 INNER JOIN sys.schemas s ON t.schema_id = s.schema_id
 WHERE s.name = 'SalesLT'
-The Lookup activity provided a list of tables, which was passed into a For Each activity. Inside the loop, a Copy activity was used to load each table from SQL Server into the Bronze tier of the Data Lake Gen2, preserving the raw data for further transformations.'''
+The Lookup activity provided a list of tables, which was passed into a For Each activity. Inside the loop, a Copy activity was used to load each table from SQL Server into the Bronze tier of the Data Lake Gen2, preserving the raw data for further transformations.
+'''
 
