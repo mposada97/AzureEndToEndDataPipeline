@@ -96,3 +96,22 @@ END
 GO
 ```
 
+## Data Serving / Data Visualization
+Finally the serverless sql pool database called gold_db was connected in powerBI. A simple dashboard was created to demonstrate the functionality of this workflow.
+![image](https://github.com/user-attachments/assets/27f0fc47-015d-44e5-a07f-3cf9cf7a7be2)
+
+## Next Steps
+This project demonstrates an end-to-end workflow for integrating on-premises data into a cloud-based analytics solution using Azure. While the implementation showcases key capabilities, there are opportunities to enhance and optimize the solution further:
+
+Incremental Data Ingestion and Transformations:
+- Currently, both the ingestion and transformations are done in overwrite mode. This approach, while simple, is not optimal for managing large datasets or controlling cloud costs.
+- To improve efficiency, incremental methods should be implemented, where only new or changed data is processed and ingested. This would significantly reduce the volume of data being handled.
+  
+Slowly Changing Dimensions (SCD Type 2):
+- The Gold tier is currently modeled with a basic star schema. A logical next step is to refine dimension tables using SCD Type 2 techniques to track historical changes and maintain data accuracy over time. This is particularly useful for building robust analytical models.
+  
+Partitioning for Performance:
+- Partitioning data in the Silver and Gold tiers can improve query performance, especially when dealing with large datasets. By organizing the data based on frequently queried columns (e.g., date or region), you can reduce the amount of data scanned during queries.
+
+
+
