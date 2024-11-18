@@ -55,9 +55,11 @@ The notebooks used for data transformations can be found in the repository linke
 Bronze Tier:
 - Data is ingested as-is from the source and saved in Parquet format in the Bronze tier.
 - This layer acts as a raw storage zone, preserving the data in its original state for traceability and auditing.
+
 Silver Tier:
 - Minor transformations are applied in the Silver tier, such as data cleaning, normalization, and deduplication.
 - This layer prepares the data for further analysis and aligns it with standard business rules.
+
 Gold Tier:
 - Final transformations are performed to organize the data into a Star Schema, facilitating analytics and reporting.
 - The Gold tier is saved in Delta format, enabling efficient querying and integration with BI tools.
