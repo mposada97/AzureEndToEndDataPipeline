@@ -38,8 +38,9 @@ Within the For Each activity, the retrieved table and schema names from the Look
 
 Each table's data was written into a folder structure based on its schema and table name, using the following dynamic expressions:
 
-Folder Path: @{concat(dataset().schemaname, '/')}
-File Name: @{concat(dataset().tablename, '.parquet')}
+- Folder Path: @{concat(dataset().schemaname, '/')}
+- File Name: @{concat(dataset().tablename, '.parquet')}
+  
 This structure allowed for a clear, logical organization of the raw ingested data in Parquet format with Snappy compression, facilitating easy navigation and further transformations.
 
 
