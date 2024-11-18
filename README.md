@@ -47,4 +47,6 @@ Each table's data was written into a folder structure based on its schema and ta
   
 This structure allowed for a clear, logical organization of the raw ingested data in Parquet format with Snappy compression, facilitating easy navigation and further transformations.
 
+Its also important to mention that by default the copy activity will overwrite files if they already exist, to have different versions of files folder with date information can also be added, or date information can be added to the file name
+
 
